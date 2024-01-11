@@ -5,10 +5,10 @@
 replicaCount: 1
 
 image:
-  repository: nginx
+  repository: ghcr.io/getodk/pyxform-http
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: ""
+  tag: "v2.0.0"
 
 imagePullSecrets: []
 nameOverride: ""

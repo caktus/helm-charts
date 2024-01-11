@@ -5,14 +5,19 @@
 replicaCount: 1
 
 image:
-  repository: nginx
+  repository: ghcr.io/caktus/central-service
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: ""
+  tag: latest
 
 imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
+
+config: {}
+  # enketoUrl: 
+  # pyxformHost: 
+  # pyxformPort:
 
 serviceAccount:
   # Specifies whether a service account should be created
@@ -41,7 +46,7 @@ securityContext: {}
 
 service:
   type: ClusterIP
-  port: 80
+  port: 8383
 
 ingress:
   enabled: false

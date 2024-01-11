@@ -5,14 +5,33 @@
 replicaCount: 1
 
 image:
-  repository: nginx
+  repository: ghcr.io/caktus/central-enketo
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: ""
+  tag: latest
 
 imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
+
+config:
+  # Set to 64-character random string
+  # enketoSecret: ""
+  # Set to 32-character random string
+  # enketoLessSecret: ""
+  # Set to 128-character random string
+  # enketoApiKey: ""
+
+  # redisMainHost: ""
+  redisMainPort: "6379"
+
+  # redisCacheHost: ""
+  redisCachePort: "6379"
+
+  supportEmail: ""
+  httpsPort: "443"
+
+  debug: false
 
 serviceAccount:
   # Specifies whether a service account should be created
@@ -41,7 +60,7 @@ securityContext: {}
 
 service:
   type: ClusterIP
-  port: 80
+  port: 8005
 
 ingress:
   enabled: false

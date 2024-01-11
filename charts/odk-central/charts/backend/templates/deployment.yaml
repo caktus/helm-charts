@@ -13,8 +13,10 @@ spec:
       {{- include "backend.selectorLabels" . | nindent 6 }}
   template:
     metadata:
-      {{- with .Values.podAnnotations }}
       annotations:
+        checksum/config-enketo: {{ toYaml .Values.global.enketoSecrets | sha256sum }}
+        checksum/config-service: {{ include (print $.Template.BasePath "/secret.yaml") . | sha256sum }}
+      {{- with .Values.podAnnotations }}
         {{- toYaml . | nindent 8 }}
       {{- end }}
       labels:
@@ -36,26 +38,48 @@ spec:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
+          command: ["wait-for-it"]
+          args: [ "{{ .Values.environmentVariables.DB_HOST }}:5432", "--", "./start-odk.sh" ]
           ports:
             - name: http
               containerPort: {{ .Values.service.port }}
               protocol: TCP
           livenessProbe:
-            httpGet:
-              path: /
-              port: http
+            exec:
+              command:
+              - bash 
+              - -c
+              - 'STATUS=$(curl --silent --include --request POST --header "Content-Type: application/json" --data-binary "{\"email\": \"email\",\"password\": \"password\"}" --write-out "%{http_code}" --output /dev/null http://localhost:8383/v1/sessions); if [[ "$STATUS" == "401" ]]; then exit 0; else exit 1; fi'
           readinessProbe:
-            httpGet:
-              path: /
-              port: http
+            exec:
+              command:
+              - bash 
+              - -c
+              - 'STATUS=$(curl --silent --include --request POST --header "Content-Type: application/json" --data-binary "{\"email\": \"email\",\"password\": \"password\"}" --write-out "%{http_code}" --output /dev/null http://localhost:8383/v1/sessions); if [[ "$STATUS" == "401" ]]; then exit 0; else exit 1; fi'
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
-          {{- with .Values.volumeMounts }}
+          env:
+            - name: ENKETO_URL
+              value: '{{ .Values.config.enketoUrl | default (printf "http://%s-enketo:8005" .Release.Name) }}'
+            - name: PYXFORM_HOST
+              value: '{{ .Values.config.pyxformHost | default (printf "%s-pyxform" .Release.Name) }}'
+            - name: PYXFORM_PORT
+              value: '{{ .Values.config.pyxformPort | default 80 }}'
+          envFrom:
+            - secretRef:
+                name: {{ include "backend.fullname" . }}
           volumeMounts:
+            - name: secret-volume
+              readOnly: true
+              mountPath: "/etc/secrets"
+          {{- with .Values.volumeMounts }}
             {{- toYaml . | nindent 12 }}
           {{- end }}
-      {{- with .Values.volumes }}
       volumes:
+        - name: secret-volume
+          secret:
+            secretName: {{ .Values.global.enketoSecretName }}
+      {{- with .Values.volumes }}
         {{- toYaml . | nindent 8 }}
       {{- end }}
       {{- with .Values.nodeSelector }}

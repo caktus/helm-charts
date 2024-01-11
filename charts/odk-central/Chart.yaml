@@ -1,6 +1,6 @@
 apiVersion: v2
 name: odk-central
-description: A Helm chart for Kubernetes
+description: A Helm chart for ODK Central
 
 # A chart can be either an 'application' or a 'library' chart.
 #
@@ -22,3 +22,31 @@ version: 0.1.0
 # follow Semantic Versioning. They should reflect the version the application is using.
 # It is recommended to use it with quotes.
 appVersion: "1.16.0"
+
+dependencies:
+  - name: redis-ha
+    repository: https://dandydeveloper.github.io/charts
+    version: 4.23.0
+    alias: enketo-redis-main
+    condition: enketo-redis-main.enabled
+  - name: redis-ha
+    repository: https://dandydeveloper.github.io/charts
+    version: 4.23.0
+    alias: enketo-redis-cache
+    condition: enketo-redis-cache.enabled
+  - name: enketo
+    repository: file://charts/enketo
+    version: 0.1.0
+    condition: enketo.enabled
+  - name: backend
+    repository: file://charts/backend
+    version: 0.1.0
+    condition: backend.enabled
+  - name: frontend
+    repository: file://charts/frontend
+    version: 0.1.0
+    condition: frontend.enabled
+  - name: pyxform
+    repository: file://charts/pyxform
+    version: 0.1.0
+    condition: pyxform.enabled

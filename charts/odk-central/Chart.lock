@@ -1,0 +1,21 @@
+dependencies:
+- name: redis-ha
+  repository: https://dandydeveloper.github.io/charts
+  version: 4.23.0
+- name: redis-ha
+  repository: https://dandydeveloper.github.io/charts
+  version: 4.23.0
+- name: enketo
+  repository: file://charts/enketo
+  version: 0.1.0
+- name: backend
+  repository: file://charts/backend
+  version: 0.1.0
+- name: frontend
+  repository: file://charts/frontend
+  version: 0.1.0
+- name: pyxform
+  repository: file://charts/pyxform
+  version: 0.1.0
+digest: sha256:49d8d9b862ffb1acf517a7ef65fc87f10fbc8948606761364eda4f692a3dd71c
+generated: "2024-01-09T13:52:08.550274-05:00"
