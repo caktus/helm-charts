@@ -15,8 +15,11 @@ global:
 
 enketo-redis-main:
   enabled: true
+  replicas: 3
 
-  replicas: 1
+  haproxy:
+    enabled: true
+    replicas: 3
 
   # use emptyDir to avoid tying pods to nodes during development
   # (not sure what this is used for, might be okay long-term too)
@@ -27,8 +30,11 @@ enketo-redis-main:
 
 enketo-redis-cache:
   enabled: true
+  replicas: 3
 
-  replicas: 1
+  haproxy:
+    enabled: true
+    replicas: 3
 
   # use emptyDir to avoid tying pods to nodes during development
   # (maybe okay long-term since this is just a cache?)
@@ -36,6 +42,8 @@ enketo-redis-cache:
     enabled: false
   emptyDir:
     sizeLimit: 500Mi
+
+  environmentVariables:
 
 enketo:
   enabled: true

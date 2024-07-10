@@ -59,17 +59,20 @@ spec:
             - name: HTTPS_PORT
               value: "{{ .Values.config.httpsPort }}"
             - name: REDIS_MAIN_HOST
-              value: '{{ .Values.config.redisMainHost | default (printf "%s-enketo-redis-main" .Release.Name) }}'
+              value: '{{ .Values.config.redisMainHost | default (printf "%s-enketo-redis-main-haproxy" .Release.Name) }}'
             - name: REDIS_MAIN_PORT
               value: "{{ .Values.config.redisMainPort }}"
             - name: REDIS_CACHE_HOST
-              value: '{{ .Values.config.redisCacheHost | default (printf "%s-enketo-redis-cache" .Release.Name) }}'
+              value: '{{ .Values.config.redisCacheHost | default (printf "%s-enketo-redis-cache-haproxy" .Release.Name) }}'
             - name: REDIS_CACHE_PORT
               value: "{{ .Values.config.redisCachePort }}"
             {{- if .Values.config.debug }}
             - name: DEBUG
               value: "enketo*"
             {{- end }}
+          envFrom:
+            - secretRef:
+                name: {{ include "enketo.fullname" . }}
           volumeMounts:
             - name: secret-volume
               readOnly: true
