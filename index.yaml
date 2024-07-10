@@ -3,6 +3,43 @@ entries:
   odk-central:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2024-07-10T14:14:51.11043298Z"
+    dependencies:
+    - alias: enketo-redis-main
+      condition: enketo-redis-main.enabled
+      name: redis-ha
+      repository: https://dandydeveloper.github.io/charts
+      version: 4.27.0
+    - alias: enketo-redis-cache
+      condition: enketo-redis-cache.enabled
+      name: redis-ha
+      repository: https://dandydeveloper.github.io/charts
+      version: 4.27.0
+    - condition: enketo.enabled
+      name: enketo
+      repository: file://charts/enketo
+      version: 0.1.0
+    - condition: backend.enabled
+      name: backend
+      repository: file://charts/backend
+      version: 0.1.0
+    - condition: frontend.enabled
+      name: frontend
+      repository: file://charts/frontend
+      version: 0.1.0
+    - condition: pyxform.enabled
+      name: pyxform
+      repository: file://charts/pyxform
+      version: 0.1.0
+    description: A Helm chart for ODK Central
+    digest: e6105b13c99571c1b3e99097ef266d5fe238000128437a0da8b4045400b0498c
+    name: odk-central
+    type: application
+    urls:
+    - https://github.com/caktus/helm-charts/releases/download/odk-central-0.2.0/odk-central-0.2.0.tgz
+    version: 0.2.0
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2024-07-10T00:23:52.876490659Z"
     dependencies:
     - alias: enketo-redis-main
@@ -149,4 +186,4 @@ entries:
     urls:
     - https://github.com/caktus/helm-charts/releases/download/odk-central-0.1.0/odk-central-0.1.0.tgz
     version: 0.1.0
-generated: "2024-07-10T00:23:52.876511097Z"
+generated: "2024-07-10T14:14:51.110457676Z"
