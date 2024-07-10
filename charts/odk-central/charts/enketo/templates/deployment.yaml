@@ -53,7 +53,7 @@ spec:
             {{- toYaml .Values.resources | nindent 12 }}
           env:
             - name: DOMAIN
-              value: "{{ .Values.config.centralDomain }}"
+              value: "{{ .Values.global.centralDomain }}"
             - name: SUPPORT_EMAIL
               value: "{{ .Values.config.supportEmail }}"
             - name: HTTPS_PORT

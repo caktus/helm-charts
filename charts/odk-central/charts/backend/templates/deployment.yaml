@@ -60,7 +60,7 @@ spec:
             {{- toYaml .Values.resources | nindent 12 }}
           env:
             - name: ENKETO_URL
-              value: '{{ .Values.config.enketoUrl | default (printf "http://%s-enketo:8005" .Release.Name) }}'
+              value: '{{ .Values.config.enketoUrl | default (printf "http://%s-enketo:8005/-" .Release.Name) }}'
             - name: PYXFORM_HOST
               value: '{{ .Values.config.pyxformHost | default (printf "%s-pyxform" .Release.Name) }}'
             - name: PYXFORM_PORT
