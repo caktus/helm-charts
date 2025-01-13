@@ -44,10 +44,16 @@ spec:
             httpGet:
               path: /
               port: http
+              httpHeaders:
+              - name: Host
+                value: "{{ .Values.global.centralDomain }}"
           readinessProbe:
             httpGet:
               path: /
               port: http
+              httpHeaders:
+              - name: Host
+                value: "{{ .Values.global.centralDomain }}"
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
           env:
