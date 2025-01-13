@@ -3,6 +3,10 @@
 This file documents all notable changes to the ODK Central Helm Chart.
 The release numbering uses [semantic versioning](http://semver.org).
 
+## 0.3.1
+
+- Set the Host header for liveness and readiness checks for the ODK Central frontend. (#3)
+
 ## 0.3.0
 
 - Add optional 2nd ingress to allow splitting traffic for public & VPN (#2)
