@@ -260,4 +260,15 @@ entries:
     urls:
     - https://github.com/caktus/helm-charts/releases/download/odk-central-0.1.0/odk-central-0.1.0.tgz
     version: 0.1.0
-generated: "2025-01-17T18:23:28.164804878Z"
+  odk-publish:
+  - apiVersion: v2
+    appVersion: sha-edd8da1
+    created: "2025-01-30T15:57:31.913462253Z"
+    description: A Helm chart for Kubernetes
+    digest: aacb853fc86eba61125a92e26a1f0405cb14e213651ef3ab94542d565ea5bb16
+    name: odk-publish
+    type: application
+    urls:
+    - https://github.com/caktus/helm-charts/releases/download/odk-publish-0.1.0/odk-publish-0.1.0.tgz
+    version: 0.1.0
+generated: "2025-01-30T15:57:31.913484304Z"
