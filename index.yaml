@@ -2,6 +2,43 @@ apiVersion: v1
 entries:
   odk-central:
   - apiVersion: v2
+    appVersion: v2024.3.1
+    created: "2025-02-03T21:53:52.060203994Z"
+    dependencies:
+    - alias: enketo-redis-main
+      condition: enketo-redis-main.enabled
+      name: redis-ha
+      repository: https://dandydeveloper.github.io/charts
+      version: 4.27.0
+    - alias: enketo-redis-cache
+      condition: enketo-redis-cache.enabled
+      name: redis-ha
+      repository: https://dandydeveloper.github.io/charts
+      version: 4.27.0
+    - condition: enketo.enabled
+      name: enketo
+      repository: file://charts/enketo
+      version: 0.1.0
+    - condition: backend.enabled
+      name: backend
+      repository: file://charts/backend
+      version: 0.1.0
+    - condition: frontend.enabled
+      name: frontend
+      repository: file://charts/frontend
+      version: 0.1.0
+    - condition: pyxform.enabled
+      name: pyxform
+      repository: file://charts/pyxform
+      version: 0.1.0
+    description: A Helm chart for ODK Central
+    digest: e4021ce5df49267a3d99c1b5f6f8acf23330055bd73bbd54fc2e67686837d70d
+    name: odk-central
+    type: application
+    urls:
+    - https://github.com/caktus/helm-charts/releases/download/odk-central-0.3.3/odk-central-0.3.3.tgz
+    version: 0.3.3
+  - apiVersion: v2
     appVersion: 1.16.0
     created: "2025-01-17T18:23:28.16477396Z"
     dependencies:
@@ -263,6 +300,16 @@ entries:
   odk-publish:
   - apiVersion: v2
     appVersion: sha-edd8da1
+    created: "2025-02-03T21:53:52.242000423Z"
+    description: A Helm chart for Kubernetes
+    digest: fb473e77578f2bcd4456561c69c41513bf3882090a060474625565808b81e653
+    name: odk-publish
+    type: application
+    urls:
+    - https://github.com/caktus/helm-charts/releases/download/odk-publish-0.1.1/odk-publish-0.1.1.tgz
+    version: 0.1.1
+  - apiVersion: v2
+    appVersion: sha-edd8da1
     created: "2025-01-30T15:57:31.913462253Z"
     description: A Helm chart for Kubernetes
     digest: aacb853fc86eba61125a92e26a1f0405cb14e213651ef3ab94542d565ea5bb16
@@ -271,4 +318,4 @@ entries:
     urls:
     - https://github.com/caktus/helm-charts/releases/download/odk-publish-0.1.0/odk-publish-0.1.0.tgz
     version: 0.1.0
-generated: "2025-01-30T15:57:31.913484304Z"
+generated: "2025-02-03T21:53:52.242019689Z"
