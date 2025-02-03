@@ -3,6 +3,10 @@
 This file documents all notable changes to the ODK Central Helm Chart.
 The release numbering uses [semantic versioning](http://semver.org).
 
+## 0.3.2
+
+- Updated `pyxform-http` version to `v3.0.0` to match [docker-compose.yml](https://github.com/getodk/central/blob/v2024.3.1/docker-compose.yml#L111) for odk-central v2024.3.1 (#7)
+
 ## 0.3.1
 
 - Set the Host header for liveness and readiness checks for the ODK Central frontend. (#3)
