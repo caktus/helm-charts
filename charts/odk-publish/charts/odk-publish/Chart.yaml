@@ -22,13 +22,3 @@ version: 0.1.2
 # follow Semantic Versioning. They should reflect the version the application is using.
 # It is recommended to use it with quotes.
 appVersion: "sha-b137f10"
-
-dependencies:
-  - name: odk-publish
-    repository: file://charts/odk-publish
-    version: 0.1.2
-  - name: odk-publish
-    repository: file://charts/odk-publish
-    version: 0.1.2
-    alias: asgi
-    condition: asgi.enabled

@@ -1,0 +1,9 @@
+dependencies:
+- name: odk-publish
+  repository: file://charts/odk-publish
+  version: 0.1.2
+- name: odk-publish
+  repository: file://charts/odk-publish
+  version: 0.1.2
+digest: sha256:790445c6c82c67f6837534096e2d9a7ae1662d22c9d3e752f6ba5b7dac618577
+generated: "2025-02-21T04:16:18.831708002+03:00"
