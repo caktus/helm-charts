@@ -47,14 +47,14 @@ spec:
               protocol: TCP
           livenessProbe:
             httpGet:
-              path: /
+              path: {{ .Values.healthChecksPath | default "/" }}
               port: {{ .Values.service.port }}
               httpHeaders:
               - name: Host
                 value: "{{ .Values.publishDomain }}"
           readinessProbe:
             httpGet:
-              path: /
+              path: {{ .Values.healthChecksPath | default "/" }}
               port: {{ .Values.service.port }}
               httpHeaders:
               - name: Host
