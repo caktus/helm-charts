@@ -299,6 +299,25 @@ entries:
     version: 0.1.0
   odk-publish:
   - apiVersion: v2
+    appVersion: sha-dd627cc
+    created: "2025-02-26T16:59:40.629451002Z"
+    dependencies:
+    - name: odk-publish
+      repository: file://charts/odk-publish
+      version: 0.1.2
+    - alias: asgi
+      condition: asgi.enabled
+      name: odk-publish
+      repository: file://charts/odk-publish
+      version: 0.1.2
+    description: A Helm chart for Kubernetes
+    digest: c8baad3b3f95d0ed78c4977baf28cbf9c4a8167c0297ec313067d3f4aae22e48
+    name: odk-publish
+    type: application
+    urls:
+    - https://github.com/caktus/helm-charts/releases/download/odk-publish-0.1.2/odk-publish-0.1.2.tgz
+    version: 0.1.2
+  - apiVersion: v2
     appVersion: sha-edd8da1
     created: "2025-02-03T21:53:52.242000423Z"
     description: A Helm chart for Kubernetes
@@ -318,4 +337,4 @@ entries:
     urls:
     - https://github.com/caktus/helm-charts/releases/download/odk-publish-0.1.0/odk-publish-0.1.0.tgz
     version: 0.1.0
-generated: "2025-02-03T21:53:52.242019689Z"
+generated: "2025-02-26T16:59:40.629482772Z"
