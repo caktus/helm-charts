@@ -137,6 +137,6 @@ To override the defaults, specify each parameter using the `--set key=value[,key
 ```bash
 helm repo add caktus https://caktus.github.io/helm-charts
 helm install <release-name> \
-  --set publishDomain=example.net \
+  --set odk-publish.publishDomain=example.net \
     caktus/odk-publish
 ```
