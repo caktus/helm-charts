@@ -44,6 +44,8 @@ The command removes all the Kubernetes components associated with the chart and 
 ## Configuration
 
 The following table lists the configurable parameters of the ODK Publish chart and their default values.
+Some of the paramaters are further documented with comments in the `values.yaml` file.
+
 If `asgi.enabled` is `false`, the chart will create only one deployment for both WSGI and ASGI, using a Daphne web server.
 Else, it will create a Gunicorn-based WSGI deployment and a Daphne-based ASGI deployment.
 The `asgi.*` parameters below are similar to their `odk-publish` counterparts, but will only apply to the
