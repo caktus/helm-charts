@@ -1,16 +1,16 @@
-# Default values for odk-publish.
+# Default values for publish-mdm.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
 publishDomain: www.example.com
 
 environmentVariables:
-  DATABASE_URL: "postgresql://postgres@172.17.0.1:9062/odk_publish"
+  DATABASE_URL: "postgresql://postgres@172.17.0.1:9062/publish_mdm"
 
 replicaCount: 1
 
 image:
-  repository: ghcr.io/caktus/odk-publish
+  repository: ghcr.io/caktus/publish-mdm
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
   tag: latest

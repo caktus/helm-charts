@@ -1,6 +1,6 @@
 # Changelog
 
-This file documents all notable changes to the ODK Publish Helm Chart.
+This file documents all notable changes to the Publish MDM Helm Chart.
 The release numbering uses [semantic versioning](http://semver.org).
 
 ## 0.1.2

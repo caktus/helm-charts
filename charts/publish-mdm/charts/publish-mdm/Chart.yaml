@@ -1,6 +1,6 @@
 apiVersion: v2
-name: odk-publish
-description: A Helm chart for ODK Publish
+name: publish-mdm
+description: A Helm chart for Kubernetes
 
 # A chart can be either an 'application' or a 'library' chart.
 #
@@ -22,13 +22,3 @@ version: 0.1.2
 # follow Semantic Versioning. They should reflect the version the application is using.
 # It is recommended to use it with quotes.
 appVersion: "sha-dd627cc"
-
-dependencies:
-  - name: odk-publish
-    repository: file://charts/odk-publish
-    version: 0.1.2
-  - name: odk-publish
-    repository: file://charts/odk-publish
-    version: 0.1.2
-    alias: asgi
-    condition: asgi.enabled

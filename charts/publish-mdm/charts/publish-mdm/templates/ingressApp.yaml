@@ -1,9 +1,9 @@
-{{- if .Values.ingress.enabled -}}
-{{- $fullName := include "odk-publish.fullname" . -}}
+{{- if .Values.ingressApp.enabled -}}
+{{- $fullName := include "publish-mdm.fullname" . -}}
 {{- $svcPort := .Values.service.port -}}
-{{- if and .Values.ingress.className (not (semverCompare ">=1.18-0" .Capabilities.KubeVersion.GitVersion)) }}
-  {{- if not (hasKey .Values.ingress.annotations "kubernetes.io/ingress.class") }}
-  {{- $_ := set .Values.ingress.annotations "kubernetes.io/ingress.class" .Values.ingress.className}}
+{{- if and .Values.ingressApp.className (not (semverCompare ">=1.18-0" .Capabilities.KubeVersion.GitVersion)) }}
+  {{- if not (hasKey .Values.ingressApp.annotations "kubernetes.io/ingress.class") }}
+  {{- $_ := set .Values.ingressApp.annotations "kubernetes.io/ingress.class" .Values.ingressApp.className}}
   {{- end }}
 {{- end }}
 {{- if semverCompare ">=1.19-0" .Capabilities.KubeVersion.GitVersion -}}
@@ -15,20 +15,20 @@ apiVersion: extensions/v1beta1
 {{- end }}
 kind: Ingress
 metadata:
-  name: {{ $fullName }}
+  name: {{ $fullName }}-app
   labels:
-    {{- include "odk-publish.labels" . | nindent 4 }}
-  {{- with .Values.ingress.annotations }}
+    {{- include "publish-mdm.labels" . | nindent 4 }}
+  {{- with .Values.ingressApp.annotations }}
   annotations:
     {{- toYaml . | nindent 4 }}
   {{- end }}
 spec:
-  {{- if and .Values.ingress.className (semverCompare ">=1.18-0" .Capabilities.KubeVersion.GitVersion) }}
-  ingressClassName: {{ .Values.ingress.className }}
+  {{- if and .Values.ingressApp.className (semverCompare ">=1.18-0" .Capabilities.KubeVersion.GitVersion) }}
+  ingressClassName: {{ .Values.ingressApp.className }}
   {{- end }}
-  {{- if .Values.ingress.tls }}
+  {{- if .Values.ingressApp.tls }}
   tls:
-    {{- range .Values.ingress.tls }}
+    {{- range .Values.ingressApp.tls }}
     - hosts:
         {{- range .hosts }}
         - {{ . | quote }}
@@ -37,7 +37,7 @@ spec:
     {{- end }}
   {{- end }}
   rules:
-    {{- range .Values.ingress.hosts }}
+    {{- range .Values.ingressApp.hosts }}
     - host: {{ .host | quote }}
       http:
         paths:
