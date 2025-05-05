@@ -3,6 +3,10 @@
 This file documents all notable changes to the Publish MDM Helm Chart.
 The release numbering uses [semantic versioning](http://semver.org).
 
+## 0.1.3
+
+- Add README and CHANGELOG files. (#10)
+
 ## 0.1.2
 
 - Add the ability to run separate ASGI and WSGI deployments. (#9)
