@@ -4,6 +4,10 @@ This file documents all notable changes to the ODK Central Helm Chart.
 The release numbering uses [semantic versioning](http://semver.org).
 
 
+## 0.3.4
+
+- Add a README file. (#11)
+
 ## 0.3.3
 
 - Increment `appVersion` to match the deployed version of ODK Central (v2024.3.1) and pin all container versions for odk-central chart.
