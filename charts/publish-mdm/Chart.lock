@@ -1,9 +1,9 @@
 dependencies:
 - name: publish-mdm
   repository: file://charts/publish-mdm
-  version: 0.1.2
+  version: 0.1.4
 - name: publish-mdm
   repository: file://charts/publish-mdm
-  version: 0.1.2
-digest: sha256:790445c6c82c67f6837534096e2d9a7ae1662d22c9d3e752f6ba5b7dac618577
-generated: "2025-02-21T04:16:18.831708002+03:00"
+  version: 0.1.4
+digest: sha256:05e80e882606dcba8547f6cab03de2b3dcfe59e48e21fb4cb41a674d1aae38e6
+generated: "2025-05-05T23:41:42.255121378+03:00"
