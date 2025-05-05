@@ -393,4 +393,24 @@ entries:
     urls:
     - https://github.com/caktus/helm-charts/releases/download/odk-publish-0.1.0/odk-publish-0.1.0.tgz
     version: 0.1.0
-generated: "2025-05-05T20:25:31.388234707Z"
+  publish-mdm:
+  - apiVersion: v2
+    appVersion: sha-dd627cc
+    created: "2025-05-05T20:44:19.042737862Z"
+    dependencies:
+    - name: publish-mdm
+      repository: file://charts/publish-mdm
+      version: 0.1.4
+    - alias: asgi
+      condition: asgi.enabled
+      name: publish-mdm
+      repository: file://charts/publish-mdm
+      version: 0.1.4
+    description: A Helm chart for Publish MDM
+    digest: 325b73f3416e5db095f82dd84befdc5407a1a21d6464d5ed716a42a5af202c36
+    name: publish-mdm
+    type: application
+    urls:
+    - https://github.com/caktus/helm-charts/releases/download/publish-mdm-0.1.4/publish-mdm-0.1.4.tgz
+    version: 0.1.4
+generated: "2025-05-05T20:44:19.042791322Z"
