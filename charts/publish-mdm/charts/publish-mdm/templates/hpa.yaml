@@ -2,14 +2,14 @@
 apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
-  name: {{ include "odk-publish.fullname" . }}
+  name: {{ include "publish-mdm.fullname" . }}
   labels:
-    {{- include "odk-publish.labels" . | nindent 4 }}
+    {{- include "publish-mdm.labels" . | nindent 4 }}
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: {{ include "odk-publish.fullname" . }}
+    name: {{ include "publish-mdm.fullname" . }}
   minReplicas: {{ .Values.autoscaling.minReplicas }}
   maxReplicas: {{ .Values.autoscaling.maxReplicas }}
   metrics:

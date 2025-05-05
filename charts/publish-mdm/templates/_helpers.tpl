@@ -1,7 +1,7 @@
 {{/*
 Expand the name of the chart.
 */}}
-{{- define "odk-publish.name" -}}
+{{- define "publish-mdm.name" -}}
 {{- default .Chart.Name .Values.nameOverride | trunc 63 | trimSuffix "-" }}
 {{- end }}
 
@@ -10,7 +10,7 @@ Create a default fully qualified app name.
 We truncate at 63 chars because some Kubernetes name fields are limited to this (by the DNS naming spec).
 If release name contains chart name it will be used as a full name.
 */}}
-{{- define "odk-publish.fullname" -}}
+{{- define "publish-mdm.fullname" -}}
 {{- if .Values.fullnameOverride }}
 {{- .Values.fullnameOverride | trunc 63 | trimSuffix "-" }}
 {{- else }}
@@ -26,16 +26,16 @@ If release name contains chart name it will be used as a full name.
 {{/*
 Create chart name and version as used by the chart label.
 */}}
-{{- define "odk-publish.chart" -}}
+{{- define "publish-mdm.chart" -}}
 {{- printf "%s-%s" .Chart.Name .Chart.Version | replace "+" "_" | trunc 63 | trimSuffix "-" }}
 {{- end }}
 
 {{/*
 Common labels
 */}}
-{{- define "odk-publish.labels" -}}
-helm.sh/chart: {{ include "odk-publish.chart" . }}
-{{ include "odk-publish.selectorLabels" . }}
+{{- define "publish-mdm.labels" -}}
+helm.sh/chart: {{ include "publish-mdm.chart" . }}
+{{ include "publish-mdm.selectorLabels" . }}
 {{- if .Chart.AppVersion }}
 app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
 {{- end }}
@@ -45,17 +45,17 @@ app.kubernetes.io/managed-by: {{ .Release.Service }}
 {{/*
 Selector labels
 */}}
-{{- define "odk-publish.selectorLabels" -}}
-app.kubernetes.io/name: {{ include "odk-publish.name" . }}
+{{- define "publish-mdm.selectorLabels" -}}
+app.kubernetes.io/name: {{ include "publish-mdm.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
 
 {{/*
 Create the name of the service account to use
 */}}
-{{- define "odk-publish.serviceAccountName" -}}
+{{- define "publish-mdm.serviceAccountName" -}}
 {{- if .Values.serviceAccount.create }}
-{{- default (include "odk-publish.fullname" .) .Values.serviceAccount.name }}
+{{- default (include "publish-mdm.fullname" .) .Values.serviceAccount.name }}
 {{- else }}
 {{- default "default" .Values.serviceAccount.name }}
 {{- end }}
