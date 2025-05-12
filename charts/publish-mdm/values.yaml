@@ -262,8 +262,7 @@ infisical:
   ingress:
     enabled: true
     nginx:
-      # The default ingress class is nginx. Enable this if the ingress class does not already
-      # exist
+      # Enable this if the nginx ingress controller does not already exist
       enabled: false
 
   postgresql:
