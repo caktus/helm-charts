@@ -244,3 +244,34 @@ asgi:
   affinity: {}
 
   healthChecksPath: /ws/health/
+
+infisical:
+  # Whether to install Infisical
+  enabled: true
+
+  # Infisical-specific values below. For more details on available values, see:
+  # - https://raw.githubusercontent.com/Infisical/infisical/main/helm-charts/infisical-standalone-postgres/values.yaml
+  # - https://github.com/Infisical/infisical/blob/main/helm-charts/infisical-standalone-postgres/README.md
+
+  infisical:
+    enabled: true
+
+    image:
+      tag: latest-postgres
+
+  ingress:
+    enabled: true
+    nginx:
+      # The default ingress class is nginx. Enable this if the ingress class does not already
+      # exist
+      enabled: false
+
+  postgresql:
+    # Disable if you don't want to create an in-cluster PostgreSQL instance.
+    # In that case, you must set the DB_CONNECTION_URI in environment variables
+    enabled: true
+
+  redis:
+    # Disable if you don't want to create an in-cluster Redis instance.
+    # In that case, you must set the REDIS_URL in environment variables.
+    enabled: true
