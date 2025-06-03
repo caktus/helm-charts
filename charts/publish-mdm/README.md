@@ -51,6 +51,13 @@ Else, it will create a Gunicorn-based WSGI deployment and a Daphne-based ASGI de
 The `asgi.*` parameters below are similar to their `publish-mdm` counterparts, but will only apply to the
 ASGI deployment (when separate deployments are enabled).
 
+If `infisical.enabled` is set, the [Infisical Helm chart][infisical] will be installed as a dependecy.
+This requires a Kubernetes Secret named `infisical-secrets` to be created in the namespace
+where you're installing Publish MDM, with the environment variables for the Infisical deployment.
+For more details on `infisical-secrets` and Infisical's Helm chart values, refer to the [Infisical Helm chart documentation][infisical].
+
+[infisical]: https://infisical.com/docs/self-hosting/deployment-options/kubernetes-helm
+
 | Parameter                                                | Description                                            | Default                                                                                                                                                                                        |
 |:---------------------------------------------------------|:-------------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `publish-mdm.publishDomain`                              | The domain name for the Publish MDM deployment.        | `"www.example.com"`                                                                                                                                                                            |
@@ -133,6 +140,7 @@ ASGI deployment (when separate deployments are enabled).
 | `asgi.tolerations`                                       |                                                        | `[]`                                                                                                                                                                                           |
 | `asgi.affinity`                                          |                                                        | `{}`                                                                                                                                                                                           |
 | `asgi.healthChecksPath`                                  | The path for liveness and readiness checks.            | `"/ws/health/"`                                                                                                                                                                                |
+| `infisical.enabled`                                      | Whether to install the Infisical subchart.             | `true`                                                                                                                                                                                         |
 
 To override the defaults, specify each parameter using the `--set key=value[,key=value]` argument to `helm install`. For example,
 
