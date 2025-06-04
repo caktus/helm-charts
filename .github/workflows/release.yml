@@ -31,6 +31,8 @@ jobs:
         run: |
           helm repo add dandydev https://dandydeveloper.github.io/charts
           cd charts/odk-central && helm dependency build
+          helm repo add infisical-helm-charts https://dl.cloudsmith.io/public/infisical/helm-charts/helm/charts/
+          cd charts/publish-mdm && helm dependency build
 
       - name: Run chart-releaser
         uses: helm/chart-releaser-action@v1.6.0
