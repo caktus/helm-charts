@@ -58,7 +58,7 @@ spec:
             {{- toYaml .Values.resources | nindent 12 }}
           env:
             - name: ENKETO_URL
-              value: '{{ .Values.config.enketoUrl | default (printf "http://%s-enketo:8005/-" .Release.Name) }}'
+              value: '{{ .Values.config.enketoUrl | default (printf "http://%s-enketo:8005" .Release.Name) }}'
             - name: SERVICE_URL
               value: '{{ .Values.config.serviceUrl | default (printf "http://%s-backend:8383" .Release.Name) }}'
           envFrom:
