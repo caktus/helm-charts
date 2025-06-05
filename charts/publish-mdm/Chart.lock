@@ -1,0 +1,12 @@
+dependencies:
+- name: publish-mdm
+  repository: file://charts/publish-mdm
+  version: 0.1.4
+- name: publish-mdm
+  repository: file://charts/publish-mdm
+  version: 0.1.4
+- name: infisical-standalone
+  repository: https://dl.cloudsmith.io/public/infisical/helm-charts/helm/charts/
+  version: 1.5.0
+digest: sha256:f1d9e7ba6b33e6876ece1b45f1c41638cf39b20676c9cce37ada8df4adb1845b
+generated: "2025-05-10T03:14:27.930754625+03:00"

@@ -1,16 +1,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "odk-publish.fullname" . }}
+  name: {{ include "publish-mdm.fullname" . }}
   labels:
-    {{- include "odk-publish.labels" . | nindent 4 }}
+    {{- include "publish-mdm.labels" . | nindent 4 }}
 spec:
   {{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.replicaCount }}
   {{- end }}
   selector:
     matchLabels:
-      {{- include "odk-publish.selectorLabels" . | nindent 6 }}
+      {{- include "publish-mdm.selectorLabels" . | nindent 6 }}
   template:
     metadata:
       annotations:
@@ -19,7 +19,7 @@ spec:
         {{- toYaml . | nindent 8 }}
       {{- end }}
       labels:
-        {{- include "odk-publish.labels" . | nindent 8 }}
+        {{- include "publish-mdm.labels" . | nindent 8 }}
         {{- with .Values.podLabels }}
         {{- toYaml . | nindent 8 }}
         {{- end }}
@@ -28,7 +28,7 @@ spec:
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-      serviceAccountName: {{ include "odk-publish.serviceAccountName" . }}
+      serviceAccountName: {{ include "publish-mdm.serviceAccountName" . }}
       {{- with .Values.podSecurityContext }}
       securityContext:
         {{- toYaml . | nindent 8 }}
@@ -47,14 +47,14 @@ spec:
               protocol: TCP
           livenessProbe:
             httpGet:
-              path: /
+              path: {{ .Values.healthChecksPath | default "/" }}
               port: {{ .Values.service.port }}
               httpHeaders:
               - name: Host
                 value: "{{ .Values.publishDomain }}"
           readinessProbe:
             httpGet:
-              path: /
+              path: {{ .Values.healthChecksPath | default "/" }}
               port: {{ .Values.service.port }}
               httpHeaders:
               - name: Host
@@ -63,7 +63,7 @@ spec:
             {{- toYaml .Values.resources | nindent 12 }}
           envFrom:
             - secretRef:
-                name: {{ include "odk-publish.fullname" . }}
+                name: {{ include "publish-mdm.fullname" . }}
           {{- with .Values.volumeMounts }}
           volumeMounts:
             {{- toYaml . | nindent 12 }}
