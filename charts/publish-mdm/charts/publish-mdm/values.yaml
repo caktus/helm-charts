@@ -119,3 +119,7 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
+
+secretVolumeSecrets: {}
+
+secretVolumeSecretName: publish-mdm-secrets
