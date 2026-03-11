@@ -8,7 +8,7 @@ image:
   repository: ghcr.io/caktus/central-service
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: v2025.1.2
+  tag: v2025.4.2
 
 imagePullSecrets: []
 nameOverride: ""
