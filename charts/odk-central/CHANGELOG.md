@@ -4,6 +4,14 @@ This file documents all notable changes to the ODK Central Helm Chart.
 The release numbering uses [semantic versioning](http://semver.org).
 
 
+## 0.4.1
+
+- Upgrade to ODK Central v2025.4.2.
+
+## 0.4.0
+
+- Upgrade to ODK Central v2025.1.2.
+
 ## 0.3.4
 
 - Add a README file. (#11)
