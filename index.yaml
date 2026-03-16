@@ -470,6 +470,30 @@ entries:
   publish-mdm:
   - apiVersion: v2
     appVersion: sha-dd627cc
+    created: "2026-03-16T22:42:14.961829753Z"
+    dependencies:
+    - name: publish-mdm
+      repository: file://charts/publish-mdm
+      version: 0.1.4
+    - alias: asgi
+      condition: asgi.enabled
+      name: publish-mdm
+      repository: file://charts/publish-mdm
+      version: 0.1.4
+    - alias: infisical
+      condition: infisical.enabled
+      name: infisical-standalone
+      repository: https://dl.cloudsmith.io/public/infisical/helm-charts/helm/charts/
+      version: 1.7.2
+    description: A Helm chart for Publish MDM
+    digest: e4e6721c6062fa38fcc2b411bdcb1d37d1efde35206e6b9a6feb12c6f93912a5
+    name: publish-mdm
+    type: application
+    urls:
+    - https://github.com/caktus/helm-charts/releases/download/publish-mdm-0.1.6/publish-mdm-0.1.6.tgz
+    version: 0.1.6
+  - apiVersion: v2
+    appVersion: sha-dd627cc
     created: "2025-06-04T16:47:24.873134407Z"
     dependencies:
     - name: publish-mdm
@@ -511,4 +535,4 @@ entries:
     urls:
     - https://github.com/caktus/helm-charts/releases/download/publish-mdm-0.1.4/publish-mdm-0.1.4.tgz
     version: 0.1.4
-generated: "2026-03-13T19:07:53.2194707Z"
+generated: "2026-03-16T22:42:14.961869126Z"
