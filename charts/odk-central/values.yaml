@@ -62,6 +62,7 @@ backend:
   enabled: true
   environmentVariables:
     DB_HOST: postgres14
+    DB_PORT: "5432"
     DB_NAME: odk
     DB_PASSWORD: odk
     DB_SSL: "null"
