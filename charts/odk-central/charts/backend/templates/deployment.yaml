@@ -39,7 +39,7 @@ spec:
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           command: ["wait-for-it"]
-          args: [ "{{ .Values.environmentVariables.DB_HOST }}:5432", "--", "./start-odk.sh" ]
+          args: [ "{{ .Values.environmentVariables.DB_HOST }}:{{ .Values.environmentVariables.DB_PORT | default 5432 }}", "--", "./start-odk.sh" ]
           ports:
             - name: http
               containerPort: {{ .Values.service.port }}
