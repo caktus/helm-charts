@@ -4,6 +4,10 @@ This file documents all notable changes to the ODK Central Helm Chart.
 The release numbering uses [semantic versioning](http://semver.org).
 
 
+## 0.4.3
+
+- Upgrade to ODK Central v2025.4.4.
+
 ## 0.4.2
 
 - Make the DB port configurable.
