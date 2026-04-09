@@ -124,6 +124,9 @@ publish-mdm:
 # Enable for separate ASGI and WSGI deployments. When disabled there will be only one deployment using Daphne
 asgi:
   enabled: false
+  # The asgi release uses the main chart's secretVolumeSecrets and secretVolumeSecretName,
+  # so they must be disabled here to avoid a race condition when installing the chart.
+  createSecretVolumeSecret: false
 
   publishDomain: www.example.com
 

@@ -123,3 +123,5 @@ affinity: {}
 secretVolumeSecrets: {}
 
 secretVolumeSecretName: publish-mdm-secrets
+
+createSecretVolumeSecret: true
