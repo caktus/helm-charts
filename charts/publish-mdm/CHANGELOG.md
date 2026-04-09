@@ -3,6 +3,10 @@
 This file documents all notable changes to the Publish MDM Helm Chart.
 The release numbering uses [semantic versioning](http://semver.org).
 
+## 0.1.7
+
+- Fix race condition during initial secret creation. (#22)
+
 ## 0.1.6
 
 - Upgrade the Infisical subchart to 1.7.2. (#17)
