@@ -38,8 +38,7 @@ spec:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
-          command: ["wait-for-it"]
-          args: [ "{{ .Values.environmentVariables.DB_HOST }}:{{ .Values.environmentVariables.DB_PORT | default 5432 }}", "--", "./start-odk.sh" ]
+          command: ["./start-odk.sh"]
           ports:
             - name: http
               containerPort: {{ .Values.service.port }}
@@ -47,13 +46,13 @@ spec:
           livenessProbe:
             exec:
               command:
-              - bash 
+              - bash
               - -c
               - 'STATUS=$(curl --silent --include --request POST --header "Content-Type: application/json" --data-binary "{\"email\": \"email\",\"password\": \"password\"}" --write-out "%{http_code}" --output /dev/null http://localhost:8383/v1/sessions); if [[ "$STATUS" == "401" ]]; then exit 0; else exit 1; fi'
           readinessProbe:
             exec:
               command:
-              - bash 
+              - bash
               - -c
               - 'STATUS=$(curl --silent --include --request POST --header "Content-Type: application/json" --data-binary "{\"email\": \"email\",\"password\": \"password\"}" --write-out "%{http_code}" --output /dev/null http://localhost:8383/v1/sessions); if [[ "$STATUS" == "401" ]]; then exit 0; else exit 1; fi'
           resources:

@@ -61,12 +61,11 @@ frontend:
 backend:
   enabled: true
   environmentVariables:
-    DB_HOST: postgres14
-    DB_PORT: "5432"
-    DB_NAME: odk
-    DB_PASSWORD: odk
-    DB_SSL: "null"
-    DB_USER: odk
+    PGHOST: postgres14
+    PGPORT: "5432"
+    PGDATABASE: odk
+    PGPASSWORD: odk
+    PGUSER: odk
     DOMAIN: ""
     EMAIL_FROM: no-reply@
     EMAIL_HOST: mail

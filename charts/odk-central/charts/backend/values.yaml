@@ -8,15 +8,15 @@ image:
   repository: ghcr.io/caktus/central-service
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: v2025.4.4
+  tag: v2026.1.1
 
 imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
 
 config: {}
-  # enketoUrl: 
-  # pyxformHost: 
+  # enketoUrl:
+  # pyxformHost:
   # pyxformPort:
 
 serviceAccount:
