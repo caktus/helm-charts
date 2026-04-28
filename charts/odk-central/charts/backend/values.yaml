@@ -19,6 +19,10 @@ config: {}
   # pyxformHost:
   # pyxformPort:
 
+# Optional pre-existing Secret to also load via envFrom alongside environmentVariables.
+# Keys from this secret take precedence. Useful for GitOps where plaintext secrets cannot be committed.
+existingSecret: ""
+
 serviceAccount:
   # Specifies whether a service account should be created
   create: true

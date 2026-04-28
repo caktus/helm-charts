@@ -14,6 +14,10 @@ imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
 
+# Optional pre-existing Secret to also load via envFrom alongside environmentVariables.
+# Keys from this secret take precedence. Useful for GitOps where plaintext secrets cannot be committed.
+existingSecret: ""
+
 config:
   # Set to 64-character random string
   # enketoSecret: ""

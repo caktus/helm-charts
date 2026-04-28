@@ -64,6 +64,10 @@ spec:
           envFrom:
             - secretRef:
                 name: {{ include "frontend.fullname" . }}
+            {{- with .Values.existingSecret }}
+            - secretRef:
+                name: {{ . }}
+            {{- end }}
           {{- with .Values.volumeMounts }}
           volumeMounts:
             {{- toYaml . | nindent 12 }}
