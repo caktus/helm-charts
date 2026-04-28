@@ -73,6 +73,10 @@ spec:
           envFrom:
             - secretRef:
                 name: {{ include "enketo.fullname" . }}
+            {{- with .Values.existingSecret }}
+            - secretRef:
+                name: {{ . }}
+            {{- end }}
           volumeMounts:
             - name: secret-volume
               readOnly: true
